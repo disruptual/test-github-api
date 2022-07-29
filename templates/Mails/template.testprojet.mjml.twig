@@ -1,0 +1,296 @@
+# This file is a "template" of which env vars need to be defined for your application
+# Create environment variables when deploying to production
+# https://symfony.com/doc/current/best_practices/configuration.html#infrastructure-related-configuration
+
+CONTAINER_REGISTRY_BASE=testprojet
+
+###> symfony/framework-bundle ###
+APP_ENV=dev
+APP_SECRET=ThisTokenIsNotSoSecretChangeIt
+APP_COOKIE_OPTIONS=
+TRUSTED_PROXIES=10.0.0.0/8,172.18.0.0/12,192.168.0.0/16
+TRUSTED_HOSTS='localhost|api'
+###< symfony/framework-bundle ###
+
+###> doctrine/doctrine-bundle ###
+# Format described at http://docs.doctrine-project.org/projects/doctrine-dbal/en/latest/reference/configuration.html#connecting-using-a-url
+# For an SQLite database, use: "sqlite:///%kernel.project_dir%/var/data.db"
+# Configure your db driver and server_version in config/packages/doctrine.yaml
+DATABASE_URL=pgsql://api:ThisPasswordIsNotSoSecretChangeIt@db:5432/api
+POSTGRES_DB=api
+POSTGRES_USER=api
+# You should definitely change the password in production
+POSTGRES_PASSWORD=ThisPasswordIsNotSoSecretChangeIt
+###< doctrine/doctrine-bundle ###
+
+###> nelmio/cors-bundle ###
+CORS_ALLOW_ORIGIN=^https?://localhost|192\.168\..*|testprojet\.disruptual\.com|testprojet\.disruptual\.local(:[0-9]+)?$
+###< nelmio/cors-bundle ###
+
+###> symfony/mercure-bundle ###
+MERCURE_PUBLISH_URL=http://mercure/.well-known/mercure
+MERCURE_SUBSCRIBE_URL=https://localhost:1338/.well-known/mercure
+# Must be the same than the JWT_KEY environment variable in the mercure container
+MERCURE_JWT_KEY=65c55ec7cf9c94a13386b1dbc31d07f58495c5e3
+MERCURE_JWT_TOKEN=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtZXJjdXJlIjp7InB1Ymxpc2giOlsiKiJdfX0.pIz3bjrTc0QHhC1c4KONmCMNgVsADRYmcZeDmQQ_Ynk
+###> symfony/mercure-bundle ###
+
+VARNISH_URL=http://cache-proxy
+
+LOCALE=fr
+
+###> disruptual/core-bundle ###
+DISRUPTUAL_API_URL=http://testprojet.api.disruptual.local
+DISRUPTUAL_MEDIA_PATH_DIR=%kernel.project_dir%/public/uploads/
+DISRUPTUAL_MEDIA_BASE_URL=http://testprojet.api.disruptual.local/uploads/
+###< disruptual/core-bundle ###
+
+
+###> lexik/jwt-authentication-bundle ###
+JWT_PASSPHRASE=ThisPassPhraseIsNotSoSecretChangeIt
+JWT_TOKEN_TTL=86400
+###< lexik/jwt-authentication-bundle ###
+
+###> gesdinet/jwt-refresh-token-bundle ###
+JWTREFRESH_TTL=2592000
+###< gesdinet/jwt-refresh-token-bundle ###
+
+###> symfony/swiftmailer-bundle ###
+# For Gmail as a transport, use: "gmail://username:password@localhost"
+# For a generic SMTP server, use: "smtp://localhost:25?encryption=&auth_mode="
+# For MailCatcher SMTP server, use: "smtp://maildev:25"
+# Delivery is disabled by default via "null://localhost"
+MAILER_URL=smtp://maildev:25
+###< symfony/swiftmailer-bundle ###
+
+###> GeocoderKey ###
+GEOCODER_KEY=AIzaSyBXvo1LoPk1j6eEAG_w5Uimu0Irw-0QdUI
+GEOCODER_COUNTRY="France"
+###< GeocoderKey ###
+
+### CGU ###
+cguDate="2018-07-02 15:46:41.0 UTC (+00:00)"
+CGU_URL="https://lareboucle.fr/cms/conditions-generales-dutilisation"
+###< CGU ###
+
+###> medias ###
+MEDIA_DIR=/home/sites/medias/api-testprojet
+THUMBNAIL_DIR=/home/sites/thumbnail/api-testprojet
+SITEMAP_DIR=/home/sites/sitemap/api-testprojet
+ELASTICSEARCH_PATH=/home/sites/elasticsearch/api-testprojet
+###< medias ###
+
+###> mangopay ###
+PSP=MANGOPAY
+PSP_URL=https://api.sandbox.mangopay.com
+PSP_CLIENT_ID=<>
+PSP_CLIENT_PASSWORD=<>
+PSP_SOCIETY_ACCOUNT_ID=<>
+PSP_SOCIETY_WALLET_ID=<>
+PSP_RETURN_URL=/purchase-success/
+PSP_ERROR_URL=/purchase-error/
+PSP_CANCEL_URL=/purchase-cancel/
+PSP_CARD_URL=/payment/
+###< mangopay ###
+
+###> Mail ###
+PLATFORM_NAME="testprojet"
+MAIL_MODERATION=contact@testprojet.com
+MAIL_MODERATION_MESSAGE=<>
+###< Mail ###
+
+###> MESSAGE ###
+# Ajouter des membres à une conversation (members ou owner)
+CONVERSATION_RIGHT=owner
+###< MESSAGE ###
+
+###> ElasticSearch ###
+ELASTICSEARCH_HOST=elasticsearch:9200
+###< ElasticSearch ###
+
+###> Captcha ###
+SECRET_KEY_RECAPTCHA=<>
+###< Captcha ###
+
+###> URL ###
+URL_SITE=http://testprojet.disruptual.local
+URI_ADMIN=/admin/
+ORDER_DETAIL_URI=order-detail
+
+URL_ITEM=/fiche-produit
+URL_CATEGORY=/liste
+URL_PAGE=/cms
+
+URL_USER_ITEMS=/users/items
+URL_USER_ORDERS=/users/orders
+URL_ADMIN_CONTACTS=/contact/
+
+API_MEDIA_PATH=/srv/api/public/images/testprojet
+PDF_FONT_PATH=/srv/api/public/fonts/
+###< URL ###
+
+###> symfony/messenger ###
+# Choose one of the transports below
+# MESSENGER_TRANSPORT_DSN=amqp://guest:guest@localhost:5672/%2f/messages
+# MESSENGER_TRANSPORT_DSN=doctrine://default
+# MESSENGER_TRANSPORT_DSN=redis://localhost:6379/messages
+###< symfony/messenger ###
+
+###> facebook ###
+FACEBOOK_CLIENT_ID=
+FACEBOOK_CLIENT_SECRET=
+###> facebook ###
+
+APP_PROJECT=testprojet
+
+QR_CODE_ORDER_PATTERN=
+
+SUPER_CART=0
+###> items ###
+ITEM_MODERATION=0
+###> items ###
+
+PRERENDER_API_URL=https://api.prerender.io
+PRERENDER_API_TOKEN=<>
+PRERENDER_USE_RECACHE=0
+PRERENDER_API_RECACHE=/recache
+
+IMAGINE_WATERMARK=0
+IMAGINE_WATERMARK_IMAGE=<>
+# if "all", all medias will be generated with watermark. If custom, all media with custom tag will be generated with watermark
+IMAGINE_WATERMARK_TAG=<>
+
+###> user ###
+USER_REGISTRATION_REQUIRES_VALIDATION=1
+USER_URL_VALIDATION_ACCOUNT=/valid-account/
+###< user ###
+
+## set to 1 to generate a voucher for each order
+VOUCHER_ON_ORDER=0
+
+## set to 1 to log response time of each route call
+RESPONSE_TIME_LOG=0
+
+## This value will be set as prefix of user email
+## MUST be string
+EMAIL_PREFIX=''
+
+###> orders ###
+DAYS_FOR_THE_SELLER_TO_COLLECT_THEIR_ITEMS_IN_STORE="+40 days"
+###< orders ###
+
+###> mondial relay ###
+MONDIAL_RELAY_FTP=<>
+MONDIAL_RELAY_UPDATED_ORDER_STATE_DELAY=<>
+MONDIAL_RELAY_PORT=<>
+###< mondial relay ###
+
+###> Cocolis ###
+COCOLIS_API_HOST=
+COCOLIS_HOST=
+COCOLIS_CLIENT_ID=
+COCOLIS_PASSWORD=
+
+COCOLIS_PSP_WALLET_ID=
+COCOLIS_PSP_ACCOUNT_ID=
+COCOLIS_PSP_BANK_ACCOUNT_ID=
+###< Cocolis ###
+
+###> symfony/messenger ###
+MESSENGER_TRANSPORT_DSN=amqp://admin:admin@rabbitmq:5672/%2f
+###< symfony/messenger ###
+
+## set to 1 to send mail asynchronously
+EMAIL_ASYNC=0
+
+###> LA REDOUTE EXTERNAL SERVICE ###
+API_HOST=
+
+# SSO
+SSO_API_HOST=<>
+SSO_REDIRECT_URI=<>
+SSO_API_CLIENT_ID=<>
+SSO_API_CLIENT_SECRET=<>
+SSO_POST_LOGOUT_URL=https://okazio-cultura.com
+
+# OAUTH
+OAUTH_API_URI=/oauth/client_credential/accesstoken
+OAUTH_KEY=<>
+OAUTH_SECRET=<>
+
+# PURCHASE HISTORY
+ORDER_API_URI=<>
+PRODUCT_API_URI=<>
+
+###> RELAIS COLIS ###
+# NEARBY RELAY LIST
+RELAIS_COLIS_NEARBY_RELAY_LIST_WEB_SERVICE_URL=<>
+RELAIS_COLIS_NEARBY_RELAY_LIST_NAMESPACE=<>
+RELAIS_COLIS_NEARBY_RELAY_LIST_USERNAME=<>
+RELAIS_COLIS_NEARBY_RELAY_LIST_PASSWORD=<>
+
+# REGISTRATION CTOC
+RELAIS_COLIS_REGISTRATION_CTOC_WEB_SERVICE_URL=<>
+RELAIS_COLIS_REGISTRATION_CTOC_NAMESPACE=<>
+RELAIS_COLIS_REGISTRATION_CTOC_USERNAME=<>
+RELAIS_COLIS_REGISTRATION_CTOC_PASSWORD=<>
+
+# TRACKING PACKAGE
+RELAIS_COLIS_TRACKING_PACKAGE_WEB_SERVICE_URL=<>
+RELAIS_COLIS_TRACKING_PACKAGE_NAMESPACE=<>
+RELAIS_COLIS_TRACKING_PACKAGE_USERNAME=<>
+RELAIS_COLIS_TRACKING_PACKAGE_PASSWORD=<>
+
+# PSP
+RELAIS_COLIS_PSP_WALLET_ID=<>
+###< RELAIS COLIS ###
+
+###> VOUCHER ###
+VOUCHER_API_URL=<>
+###< VOUCHER ###
+
+## set to 1 to use database email translations
+USE_DATABASE_EMAIL_TRANSLATION=1
+
+EXCLUDED_SUB_FAMILY_CODES=
+
+CHECK_FOR_IMAGE_PREFILLING=1
+INCLUDED_BRANDS_FOR_IMAGE_PREFILLING=
+
+IMAGINE_WATERMARK=0
+IMAGINE_WATERMARK_IMAGE=
+# if "all", all medias will be generated with watermark. If custom, all media with custom tag will be generated with watermark
+IMAGINE_WATERMARK_TAG=original
+
+ORDER_FEE_FIXE=0
+ORDER_FEE_PERCENT=5
+ORDER_ABUNDED_PRICE_BUYER=20
+ORDER_ABUNDED_PRICE_SELLER=20
+ORDER_DISRUPTUAL_PERCENT=8
+ORDER_PSP_FIXE=0.15
+ORDER_PSP_PERCENT=0.52
+
+VOUCHER_GENERATION_LIMIT=0
+VOUCHER_AUTOMATIC_GENERATION=0
+VOUCHER_VALIDATED_LIMIT='+6 month'
+
+MAX_ORDER_ACCEPTED_DELAY='+3 day'
+MAX_SENDED_DELAY='+7 day'
+MAX_AUTOMATIC_VALIDATED_DELAY='+30 day'
+MAX_DEPOSITATED_DELAY='+5 day'
+MAX_AVAILABLE_DELAY='+14 day'
+TRIGGERDELAY_SEND_CONFIRMATION='2 day'
+TRIGGERDELAY_SEND_DEPOSIT='3 day'
+TRIGGERDELAY_SEND_DEPOSIT_MAX='5 day'
+TRIGGERDELAY_SEND_DISTRIBUTED='5 day'
+TRIGGERDELAY_SEND_DISTRIBUTED_MAX='10 day'
+TRIGGERDELAY_CANCEL_ORDERED='3 day'
+TRIGGERDELAY_CANCEL_ORDER_ACCEPTED='8 day'
+RELAISCOLIS_TRIGGER_DELAY_PACKAGE_AUTOMATICALLY_VALIDATED_BY_BUYER="10 day"
+RELAISCOLIS_TRIGGER_DELAY_PACKAGE_NOT_DEPOSITED_BY_SELLER="7 day"
+RELAISCOLIS_TRIGGER_DELAY_PACKAGE_NOT_RECOVERED_BY_BUYER="7 day"
+
+CREATE_PSP_ACCOUNT_DURING_USER_REGISTRATION=0
+
+LOGSTASH_HOST=elk-logstash
+
